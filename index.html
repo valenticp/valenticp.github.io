@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valenticp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #FCFBF8;
+            color: #1A1A1A;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: var(--font-serif);
+        }
+
+        .glass {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(252, 251, 248, 0.7);
+        }
+
+        .masonry {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry {
+                column-count: 3;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all .8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: #A6458A;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+            transition: transform .15s ease;
+        }
+
+        .imagen-centrada {
+            display: block;
+            /* Convierte la imagen en bloque */
+            margin: 0px 0px 0px 80px;
+            /* Arriba | Derecha | Abajo | Izquierda */
+            width: 50%;
+            /* Tamaño de la imagen */
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F5F1EA;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D9CFC4;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C4B7A8;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-[#D76C5A]/20">
+
+    <div class="cursor-dot hidden md:block" id="cursor"></div>
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-black/5">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between">
+            <a href="#" class="serif text-[22px] tracking-tight">Andrea Valentina Contreras Pérez</a>
+            <div class="hidden md:flex items-center gap-10 text-[14px] font-medium">
+                <a href="#ilustraciones" class="hover:opacity-60 transition">Ilustración</a>
+                <a href="#materializado" class="hover:opacity-60 transition">Materializado</a>
+                <a href="#sobre-mi" class="hover:opacity-60 transition">Sobre mí</a>
+                <a href="#contacto"
+                    class="px-4 py-2 rounded-full bg-[#1A1A1A] text-white hover:bg-black transition">Contacto</a>
+            </div>
+            <button id="menuBtn" class="md:hidden p-2">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 12h16M4 6h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden border-t border-black/5 glass">
+            <div class="px-6 py-4 flex flex-col gap-4 text-[15px]">
+                <a href="#ilustraciones">Ilustración</a>
+                <a href="#materializado">Materializado</a>
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#contacto" class="mt-2 px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-center">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative min-h-[92vh] flex items-center pt-24 overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#FCFBF8] via-[#FCFBF8]/80 to-[#F5F1EA]"></div>
+            <!--img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=2000&auto=format&fit=crop" class="w-full h-full object-cover opacity-[0.08]" alt=""-->
+            <img src="Images/fondo-principal.png" class="w-full h-full object-cover opacity-[0.08]" alt="fondo">
+        </div>
+        <div
+            class="relative max-w-[1200px] mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+            <div class="reveal">
+                <p class="text-[13px] tracking-[0.2em] uppercase text-[#A6458A] font-medium mb-6">Diseño de Vestuario •
+                    Ilustración Textil</p>
+                <h1 class="serif text-[ clamp(42px,7vw,84px) ] leading-[0.95] tracking-tight">
+                    Donde el alma es pincel<br />y el textil <span class="italic">lienzo</span>
+                </h1>
+                <p class="mt-6 text-[18px] leading-relaxed text-[#4A4A4A] max-w-xl">
+                    Portfolio profesional de ilustración de moda y textil. Transformo memorias en bocetos, emociones en
+                    color y territorios en superficies que pueden habitarse.
+                </p>
+                <div class="mt-10 flex flex-wrap gap-4">
+                    <a href="#ilustraciones"
+                        class="px-6 py-3 rounded-full bg-[#1A1A1A] text-white text-[14px] font-medium hover:translate-y-[-2px] transition">Ver
+                        ilustraciones</a>
+                    <a href="#materializado"
+                        class="px-6 py-3 rounded-full border border-black/15 text-[14px] font-medium hover:bg-black/5 transition">Trabajos
+                        materializados</a>
+                </div>
+                <div class="mt-12 flex items-center gap-6 text-[13px] text-[#6B6B6B]">
+                    <span>Disponible para colaboraciones</span>
+                    <span class="w-1 h-1 bg-black/30 rounded-full"></span>
+                    <span>Ubicada en Medellín, Col</span>
+                </div>
+            </div>
+            <div class="relative reveal">
+                <!--div class="aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl shadow-black/10">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1200&auto=format&fit=crop" class="w-full h-full object-cover" alt="Ilustración de moda">
+                </div-->
+                <div class="aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl shadow-black/10">
+                    <img src="Images/foto-grupal-territorios.jpeg" class="w-full h-full object-cover"
+                        alt="Detalle textil">
+                </div>
+                <div
+                    class="absolute -bottom-10 -left-10 w-48 h-64 rounded-[10px] overflow-hidden shadow-xl hidden lg:block rotate-[-3deg]">
+                    <img src="Images/figurines-territorios.jpeg" class="w-full h-full object-cover"
+                        alt="Ilustración de moda">
+                </div>
+                <!-- contenedor oculto: div class="absolute -top-8 -right-8 bg-white rounded-2xl shadow-lg px-5 py-4 border border-black/5 hidden lg:block">
+                    <p class="serif text-3xl leading-none">120+</p>
+                    <p class="text-[12px] uppercase tracking-wide text-[#6B6B6B] mt-1">Ilustraciones</p>
+                </div-->
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER -->
+    <section class="py-10 border-y border-black/5 bg-[#F5F1EA]/60">
+        <div class="overflow-hidden whitespace-nowrap">
+            <div class="animate-[marquee_30s_linear_infinite] inline-flex items-center gap-12">
+                <span class="serif text-[28px] opacity-80">Ilustración Textil</span>
+                <span class="w-2 h-2 bg-[#A6458A] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Diseño de Vestuario</span>
+                <span class="w-2 h-2 bg-[#A6458A] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Bocetaje de Moda</span>
+                <span class="w-2 h-2 bg-[#A6458A] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Conceptualización de Colección</span>
+                <span class="w-2 h-2 bg-[#A6458A] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Ilustración Textil</span>
+                <span class="w-2 h-2 bg-[#A6458A] rounded-full"></span>
+            </div>
+        </div>
+        <style>
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0)
+                }
+
+                100% {
+                    transform: translateX(-50%)
+                }
+            }
+        </style>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section id="sobre-mi" class="py-24 lg:py-32">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-20 items-start">
+            <div class="reveal">
+                <h2 class="serif text-[48px] leading-[1.1]">Sobre mí</h2>
+                <p class="mt-6 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Soy estudiante de diseño de vestuario en UPB, mi perfil integra ilustracion de moda, ilustracion
+                    textil y dirección creativa. Mi trabajo nace de la observación del mundo identificando aquello que
+                    vibra con nuestra esencia y como el cuerpo logra transformarse a través de ella, representada en
+                    textiles, formas y colores. Combino técnicas análogas, acuarela, óleo, tinta, collage— con
+                    exploración digital para crear universos visuales que luego cobran vida para vestir cuerpos.
+                </p>
+                <p class="mt-4 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Desde el ámbito académico he tenido acercamiento a marcas como Levis en donde el reto era
+                    transformar prendas ya listas como jeans, chaquetas, shorts en nuevas propuestas de diseño, también
+                    se diseñó una cápsula grupal para la marca Tennis, conformada por 25 roperos y un outfit
+                    materializado.
+                </p>
+                <div class="mt-10 grid grid-cols-2 gap-6">
+                    <div class="p-5 rounded-2xl bg-white border border-black/5 shadow-sm">
+                        <p class="text-[13px] uppercase tracking-wide text-[#A6458A]">Especialidades</p>
+                        <p class="mt-2 font-medium leading-snug">Ilustración de moda, estampado, dirección de arte
+                            textil, narrativa visual, manejo del color.</p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-white border border-black/5 shadow-sm">
+                        <p class="text-[13px] uppercase tracking-wide text-[#A6458A]">Herramientas</p>
+                        <p class="mt-2 font-medium leading-snug">Procreate, dibujo análogo, Inteligencia artificial
+                            aplicada a procesos creativos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal lg:pt-12">
+                <div class="aspect-[4/5] rounded-[24px] overflow-hidden">
+                    <img src="Images/foto-profesional.jpeg" class="w-full h-full object-cover" alt="Estudio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ILUSTRACIONES -->
+    <section id="ilustraciones" class="py-24 bg-[#1A1A1A] text-[#F5F1EA]">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8">
+            <div class="flex flex-wrap items-end justify-between gap-8 mb-12 reveal">
+                <div>
+                    <p class="text-[13px] tracking-[0.2em] uppercase text-[#A6458A] font-medium">Portafolio</p>
+                    <h2 class="serif text-[52px] leading-[1.05] mt-2">Ilustración textil & moda</h2>
+                </div>
+                <div class="flex gap-2 text-[13px]">
+                    <button data-filter="all"
+                        class="filter-btn px-4 py-2 rounded-full bg-white/10 hover:bg-white/15 transition">Todo</button>
+                    <button data-filter="textil"
+                        class="filter-btn px-4 py-2 rounded-full hover:bg-white/10 transition">Diseño Textil</button>
+                    <button data-filter="figurin"
+                        class="filter-btn px-4 py-2 rounded-full hover:bg-white/10 transition">Figurines</button>
+                    <button data-filter="ropero"
+                        class="filter-btn px-4 py-2 rounded-full hover:bg-white/10 transition">Roperos</button>
+                </div>
+            </div>
+
+            <div class="masonry" id="gallery">
+                <!-- Items -->
+            </div>
+        </div>
+    </section>
+
+    <!-- MATERIALIZADO -->
+    <section id="materializado" class="py-24 lg:py-32 bg-[#F5F1EA]">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl reveal">
+                <p class="text-[13px] tracking-[0.2em] uppercase text-[#A6458A] font-medium">Del papel al cuerpo</p>
+                <h2 class="serif text-[52px] leading-[1.05] mt-3">Trabajos materializados</h2>
+                <p class="mt-5 text-[17px] leading-relaxed text-[#4A4A4A]">Selección de prendas y vestuarios realizados
+                    a partir de mis ilustraciones. Proceso completo: investigación, desarrollo textil, prototipo y
+                    cápsula final.</p>
+            </div>
+
+            <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Card 1 Producto comercial -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <a href="">
+                            <img src="Images/Portadas/card-producto.jpeg"
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                                alt="Producto Comercial">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Florentina & Elba</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Vestuario nupcial que conecta
+                            con la esencia del alma. Una propuesta que mezcla bordado, cartas de amor e ilustración,
+                            conectando con cada detalle.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Producto Comercial</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2026</span>
+                            <a class="px-3 py-1 rounded-full bg-black/5" href="">Revista Digital</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 2 Territorios e Identidades -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <a href="">
+                            <img src="Images/Portadas/card-territorios.jpeg"
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                                alt="Territorios">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Capsula "Rituales del amor"</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Cuerpos de un territorio lleno
+                            de herencia, que hacen del amor un lenguaje vivo de resistencia, memoria y libertad,
+                            habitando sus calles en formas diversas de memorias compartidas.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Territorios e identidades</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2025</span>
+                            <a class="px-3 py-1 rounded-full bg-black/5" href="">Revista Digital</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 3 Retos de diseño (rapidos) -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <a href="">
+                            <img src="Images/Portadas/card-retos.jpeg"
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                                alt="Retos">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Retos de diseño</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Ejercicio académico intensivo que plantea un reto creativo con una temática específica, en el que se desarrolla la investigación, conceptualización, diseño y materialización de una propuesta de vestuario en un tiempo limitado.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Trabajo grupal</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2024 - 2025 - 2026</span>
+                            <a class="px-3 py-1 rounded-full bg-black/5" href="">Revista Digital</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 4 Identidad y sociedad -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <a href="">
+                            <img src="Images/Portadas/card-elysium.jpeg"
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                                alt="Elysium">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Cápsula "Elysium"</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Prendas cómodas y frescas que celebren la energía colectiva y la alegría del ritmo compartido, estampados vibrantes que reflejan la comunidad y la energía de cada movimiento.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Identidad y sociedad</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2024</span>
+                            <a class="px-3 py-1 rounded-full bg-black/5" href="">Revista Digital</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 5 Fenomeno del cambio climatico -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <a href="">
+                            <img src="Images/Portadas/card-eteria.jpeg"
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                                alt="Eteria">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Cápsula "Eteria"</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Proyecto de diseño en el que trabajamos con prendas de segunda mano como base, Eteria es más que una cápsula es una postura, un puente entre lo que el sistema desecha y lo que aún tiene valor. Aquí, el diseño se vuelve herramienta, la prenda se vuelve manifiesto, y el usuario transformador.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Cambio climático</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2025</span>
+                            <a class="px-3 py-1 rounded-full bg-black/5" href="">Revista Digital</a>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 6 Identificación de marca -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <a href="">
+                            <img src="Images/Portadas/card-bruma.jpeg"
+                                class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                                alt="Bruma">
+                        </a>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Cápsula "Bruma serena"</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Bruma Serena nace como una pausa dentro del ritmo cotidiano, una propuesta que traduce la calma en lenguaje vestible sin desprenderse del carácter urbano de Tennis.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Marca invitada</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2026</span>
+                            <a class="px-3 py-1 rounded-full bg-black/5" href="">Revista Digital</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24 bg-[#1A1A1A] text-[#F5F1EA]">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16">
+            <div class="reveal">
+                <h2 class="serif text-[52px] leading-[1.05]">Trabajemos juntos</h2>
+                <p class="mt-5 text-[17px] leading-relaxed text-white/70 max-w-md">¿Tienes un proyecto de vestuario,
+                    colección o ilustración textil? Me encantaría escucharte.</p>
+                <div class="mt-10 space-y-4 text-[15px]">
+                    <a href="mailto:andreav.contrerasp@gmail.com" class="flex items-center gap-3 hover:opacity-80">✉️
+                        andreav.contrerasp@gmail.com</a>
+                    <!-- a href="https://instagram.com" target="_blank" class="flex items-center gap-3 hover:opacity-80">📷 @valentina.rios.studio</a -->
+                    <p class="flex items-center gap-3">📍 Medellín, Colombia — También disponible para trabajo remoto
+                    </p>
+                </div>
+            </div>
+            <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="reveal bg-white/5 backdrop-blur rounded-[24px] p-8 border border-white/10 space-y-5">
+                <!-- TU CLAVE DE ACCESO web3forms 250 msg al mes -->
+                <input type="hidden" name="access_key" value="182addbf-15f8-4dcb-a172-03f406da6ec8">
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="text-[13px] text-white/70">Nombre</label>
+                        <input required type="text" name="name" class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition placeholder-white/40" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="text-[13px] text-white/70">Email</label>
+                        <input required type="email" name="email" class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition placeholder-white/40" placeholder="tu@email.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[13px] text-white/70">Tipo de proyecto</label>
+                    <select name="tipo_proyecto" class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition">
+                        <option class="text-black">Ilustración de moda</option>
+                        <option class="text-black">Diseño textil / estampado</option>
+                        <option class="text-black">Vestuario escénico</option>
+                        <option class="text-black">Colaboración / Otro</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[13px] text-white/70">Mensaje</label>
+                    <textarea required name="message" rows="4" class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition placeholder-white/40" placeholder="Cuéntame sobre tu idea..."></textarea>
+                </div>
+
+                <!-- Protección Anti-Spam (Honeypot) -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <button type="submit" class="w-full py-3 rounded-xl bg-[#D76C5A] hover:bg-[#c95f4e] transition font-medium">Enviar mensaje</button>
+                <p id="formMsg" class="text-center text-[13px] text-white/60 hidden">¡Gracias! Te responderé en 24-48h.</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-white/10 bg-[#1A1A1A] text-white/50">
+        <div
+            class="max-w-[1200px] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px]">
+            <p>&copy; <span id="year"></span> Valentina Contreras — Todos los derechos reservados.</p>
+            <!-- div class="flex gap-6">
+                <a href="#" class="hover:text-white transition">Instagram</a>
+                <a href="#" class="hover:text-white transition">Behance</a>
+                <a href="#" class="hover:text-white transition">LinkedIn</a>
+            </div -->
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm hidden items-center justify-center p-6">
+        <button id="lbClose" class="absolute top-6 right-6 text-white/80 hover:text-white text-3xl">&times;</button>
+        <img id="lbImg" src="" alt="" class="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+            <p id="lbCaption" class="text-white/90 serif text-[20px]"></p>
+            <p id="lbMeta" class="text-white/50 text-[13px] mt-1"></p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Reveal on scroll
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Cursor
+        const cursor = document.getElementById('cursor');
+        window.addEventListener('mousemove', e => {
+            cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform += ' scale(2)');
+            el.addEventListener('mouseleave', () => cursor.style.transform = cursor.style.transform.replace(' scale(2)', ''));
+        });
+
+        const galleryItems = [
+            { src: 'Images/Textil/aldaba.jpeg', title: 'Calco de collage', meta: 'Santa Fe de Antioquía, 2025', cat: 'textil' },
+            { src: 'Images/Figurines/capa-bordada.jpeg', title: 'Alma mía', meta: 'Ceremonia bordada, 2026', cat: 'figurin' },
+            { src: 'Images/Roperos/anillos.jpeg', title: 'Almas eternas', meta: 'Uniones reales, 2026', cat: 'ropero' },
+            { src: 'Images/Textil/connor.jpeg', title: 'Retrato creativo', meta: 'Trazos peludos, 2026', cat: 'textil' },
+            { src: 'Images/Figurines/chaleco-fleco.jpeg', title: 'Vanguardia serena', meta: 'Viento al pasar, 2026', cat: 'figurin' },
+            { src: 'Images/Roperos/blazer.jpeg', title: 'El beso', meta: 'Abrazos eternos, 2026', cat: 'ropero' },
+            { src: 'Images/Textil/velitas.jpeg', title: 'Tradiciones', meta: 'Velitas en el aire, 2025', cat: 'textil' },
+            { src: 'Images/Figurines/flores-pantalon.jpeg', title: 'Paseo de dos', meta: 'Entre  flores y corazones, 2025', cat: 'figurin' },
+            { src: 'Images/Roperos/bralette.jpeg', title: 'Lirios', meta: 'Adicción, 2026', cat: 'ropero' },
+            { src: 'Images/Textil/delfines.jpeg', title: 'En el fondo del mar', meta: 'Aura marina, 2026', cat: 'textil' },
+            { src: 'Images/Figurines/isaura.jpeg', title: 'Fascinación nostálgica', meta: 'Jardines de magia, 2024', cat: 'figurin' },
+            { src: 'Images/Roperos/conjunto.jpeg', title: 'Endulzando la amargura', meta: 'Paseo de dos, 2025', cat: 'ropero' },
+            { src: 'Images/Textil/corazones.jpeg', title: 'Pop heart', meta: 'Corazones atrevidos, 2024', cat: 'textil' },
+            { src: 'Images/Figurines/pareja-rosa.jpeg', title: 'La plazuela', meta: 'Amores visibles, 2025', cat: 'figurin' },
+            { src: 'Images/Roperos/corsette.jpeg', title: 'Una llave, dos corazones', meta: 'Naturaleza interior, 2026', cat: 'ropero' },
+            { src: 'Images/Figurines/pareja-verde.jpeg', title: 'Las santas barbaras', meta: 'Detalles y vuelo, 2025', cat: 'figurin' },
+            { src: 'Images/Textil/flores.jpeg', title: 'Flores en el jardín', meta: 'La casa de la abuela, 2024', cat: 'textil' },
+            { src: 'Images/Figurines/vestido-corto.jpeg', title: 'Poesía viva', meta: 'Almas unidas, 2026', cat: 'figurin' },
+            { src: 'Images/Figurines/vestido-nube.jpeg', title: 'Agua de coco', meta: 'Olas del mar, 2026', cat: 'figurin' },
+        ];
+
+        const gallery = document.getElementById('gallery');
+        function renderGallery(filter = 'all') {
+            gallery.innerHTML = '';
+            galleryItems.filter(i => filter === 'all' || i.cat === filter).forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'masonry-item group cursor-zoom-in';
+                div.innerHTML = `
+                    <div class="relative overflow-hidden rounded-[20px] bg-black">
+                        <img src="${item.src}" alt="${item.title}" class="w-full h-auto object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition">
+                            <h4 class="serif text-white text-[22px] leading-tight">${item.title}</h4>
+                            <p class="text-white/70 text-[13px] mt-1">${item.meta}</p>
+                        </div>
+                    </div>
+                `;
+                div.addEventListener('click', () => openLightbox(item));
+                gallery.appendChild(div);
+            });
+        }
+        renderGallery();
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('bg-white/10'));
+                btn.classList.add('bg-white/10');
+                renderGallery(btn.dataset.filter);
+            });
+        });
+
+        // Lightbox
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbCaption = document.getElementById('lbCaption');
+        const lbMeta = document.getElementById('lbMeta');
+        function openLightbox(item) {
+            lbImg.src = item.src;
+            lbCaption.textContent = item.title;
+            lbCaption.className = "serif text-[22px] uppercase leading-tight text-[#A6458A] font-bold bg-[#f3f4f6] py-2 px-4 rounded-md";
+            lbMeta.textContent = item.meta;
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+        document.getElementById('lbClose').onclick = () => lb.classList.add('hidden');
+        lb.addEventListener('click', e => { if (e.target === lb) lb.classList.add('hidden'); });
+
+        // Form
+        document.getElementById('contactForm').addEventListener('submit', e => {
+            e.preventDefault();
+            document.getElementById('formMsg').classList.remove('hidden');
+            e.target.reset();
+        });
+
+        // Year for Copy Right
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
