@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retos</title>
+    <link rel="icon" type="image/png" href="Images/Retos/dartboard-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #FCFBF8;
+            color: #1A1A1A;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: var(--font-serif);
+        }
+
+        .glass {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(252, 251, 248, 0.7);
+        }
+
+        .masonry {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry {
+                column-count: 3;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all .8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: #36454F;
+            border-radius: 50%;
+            pointer-events: none;
+            /*mix-blend-mode: difference;*/
+            z-index: 9999;
+            transition: transform .15s ease;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F5F1EA;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D9CFC4;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C4B7A8;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-[#D76C5A]/20">
+
+    <div class="cursor-dot hidden md:block" id="cursor"></div>
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-black/5">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between">
+            <a href="index.html" class="serif text-[22px] tracking-tight">Andrea Valentina Contreras Pérez</a>
+            <div class="hidden md:flex items-center gap-10 text-[14px] font-medium">
+                <a href="#concepto" class="hover:opacity-60 transition">Conceptualización</a>
+                <a href="#proceso" class="hover:opacity-60 transition">Proceso</a>
+                <a href="#materializado" class="hover:opacity-60 transition">Materializado</a>
+            </div>
+            <button id="menuBtn" class="md:hidden p-2">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 12h16M4 6h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden border-t border-black/5 glass">
+            <div class="px-6 py-4 flex flex-col gap-4 text-[15px]">
+                <a href="#concepto">Conceptualización</a>
+                <a href="#proceso">Proceso</a>
+                <a href="#materializado">Materializado</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative min-h-[92vh] flex items-center pt-24 overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#FCFBF8] via-[#FCFBF8]/80 to-[#F5F1EA]"></div>
+            <img src="Images/Retos/fondo.jpeg" class="w-full h-full object-cover opacity-[0.3]" alt="fondo">
+        </div>
+        <div
+            class="relative max-w-[1200px] mx-auto px-6 lg:px-8 w-full grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-center">
+            <div class="reveal">
+                <p class="text-[13px] tracking-[0.2em] uppercase text-[#36454F] font-medium mb-6">Retos diseño de vestuario</p>
+                <h1 class="serif text-[ clamp(42px,7vw,84px) ] leading-[0.95] tracking-tight">
+                    La <span class="italic">creatividad</span> se mide por la capacidad de responder al <span class="italic">desafío</span>
+                </h1>
+                <p class="mt-6 text-[18px] leading-relaxed text-[#4A4A4A] max-w-xl">
+                    Los retos de diseño de vestuario son ejercicios académicos de creación intensiva desarrollados en un tiempo aproximado de una semana.
+                </p>
+            </div>
+            <div class="relative reveal">
+                <div class="aspect-[4/5] rounded-[24px] overflow-hidden shadow-2xl shadow-black/10">
+                    <img src="Images/Retos/foto-principal.jpeg" class="w-full h-full object-cover"
+                        alt="Detalle textil">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- BANNER -->
+    <section class="py-10 border-y border-black/5 bg-[#D5DDE2]/60">
+        <div class="overflow-hidden whitespace-nowrap">
+            <div class="animate-[marquee_30s_linear_infinite] inline-flex items-center gap-12">
+                <span class="serif text-[28px] opacity-80">Mausoleo Distópico</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Vestido con mangas largas</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Entre ramas y ruido</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Vestido encorsetado corto con cola</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Sombrero en jean y trenzas de yute</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Dao Xin</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Chaqueta de jean cuello alto y ojales en nudo chino</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Pantalón ajustable con cortes laterales</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span>
+                <span class="serif text-[28px] opacity-80">Mausoleo Distópico</span>
+                <span class="w-2 h-2 bg-[#36454F] rounded-full"></span> 
+            </div>
+        </div>
+        <style>
+            @keyframes marquee {
+                0% {
+                    transform: translateX(0)
+                }
+
+                100% {
+                    transform: translateX(-50%)
+                }
+            }
+        </style>
+    </section>
+
+    <!-- CONCEPTUALIZACIÓN Mausoleo Distópico -->
+    <section id="concepto" class="py-24 lg:py-32">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 grid lg:grid-cols-1 gap-20 items-start">
+            <div class="reveal">
+                <p class="text-[24px] tracking-[0.2em] uppercase text-[#36454F] font-medium">CONCEPTUALIZACIÓN</p>
+                <h2 class="serif text-[48px] leading-[1.1]">Mausoleo Distópico</h2>
+                <p class="mt-6 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Marzo 2024, Experiencias investigativas del vestir y la moda, Diseño para la crisis y transiciones.
+                <p class="mt-4 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Este rápido de diseño nos permitió especular desde la proyección de nuevos mundos, a partir de una pregunta: ¿Qué pasaría si estuviéramos a temperaturas -10º Celsius? Nuestra respuesta a eso fue crear “El mausoleo distópico” esta es una prenda que imagina un escenario que cítrica el consumismo desmedido de personas con gran poder adquisitivo que ha llevado al desequilibrio climático.
+                </p>
+                <p class="mt-4 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Su alto cuello simboliza la ignorancia que les impide ver la realidad mientras son asfixiados por su avaricia. Las mangas, la cola del vestido y la capota representan el peso de los pecados medioambientales y las consecuencias de su insaciable deseo de consumir más, “Para así diseñar cuerpos y diseñar futuros.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPTUALIZACIÓN Entre ramas y ruido-->
+    <section id="concepto" class="py-24 lg:py-32 bg-[#D5DDE2]/60">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 grid lg:grid-cols-1 gap-20 items-start">
+            <div class="reveal">
+                <p class="text-[24px] tracking-[0.2em] uppercase text-[#36454F] font-medium">CONCEPTUALIZACIÓN</p>
+                <h2 class="serif text-[48px] leading-[1.1]">Entre ramas y ruido</h2>
+                <p class="mt-6 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Abril 2025, Moda circular: Laureles no solo como urbanismo sino como identidad, ¿cómo habitamos sin destruir?
+                </p>
+                <p class="mt-4 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    En este reto tuvimos tres días para crear un vestuario que representara a Laureles, algo de su naturaleza y que al mismo tiempo fuesen a partir de prendas ya existentes, se realizó en el día uno luego de dar el enunciado una Cata de vestuario, en donde se analizaron prendas de segunda, sus textiles, su tiempo de vida, adaptaciones, cumplimiento de su función, entre otros, esto ayudó a tenerlo en cuenta para llevar a cabo del reto.
+                </p>
+                <p class="mt-4 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Inspirados en su gente y en el árbol de caucho, creamos un vestido que es equilibrio: denim reciclado, como la ciudad que crece, y yute, como raíces que la sostienen. Un sombrero imponente proyecta sombra, como los árboles que protegen. Esta pieza es un manifiesto: la moda puede regenerar, la belleza puede ser sostenible y la ciudad, si aprende de la naturaleza, puede florecer.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPTUALIZACIÓN Dao Xin -->
+    <section id="concepto" class="py-24 lg:py-32">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 grid lg:grid-cols-1 gap-20 items-start">
+            <div class="reveal">
+                <p class="text-[24px] tracking-[0.2em] uppercase text-[#36454F] font-medium">CONCEPTUALIZACIÓN</p>
+                <h2 class="serif text-[48px] leading-[1.1]">Dao Xin</h2>
+                <p class="mt-6 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Marzo 2026, Los juegos del vestuario.
+                </p>
+                <p class="mt-4 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    Cada grupo se basaba en un distrito positivo principal para el desarrollo del producto final, la marca Levi's patrocinó las prendas de las cuales se partiría el ejercicio, nos entregaron tres jeans y una chaqueta esa fue la base para poder continuar, nuestro distrito era Armonía, los valores centrales de este son Equilibrio integral y bienestar emocional. Quisimos realizar un vestuario que permitiera la conexión con la mente y el cuerpo, para las personas que practican moviendo consciente y que se sienten atrapadas, poder crear un vestuario que abrace pero no apriete, que contenga pero no atosigue. 
+                </p>
+                <p class="mt-4 text-[17px] leading-relaxed text-[#4A4A4A]">
+                    A través del upcycling de piezas de Levi's, se transforma la memoria del material en un lenguaje de evolución y disciplina. La reinterpretación del uniforme tradicional chino abre un espacio de experimentación formal, donde estructura y fluidez coexisten.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section id="proceso" class="bg-[#D5DDE2] py-24 lg:py-32">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-20 items-start">
+                <div class="reveal sticky top-28">
+                    <p class="text-[13px] tracking-[0.2em] uppercase text-[#36454F] font-medium">Metodología</p>
+                    <h2 class="serif text-[52px] leading-[1.05] mt-3">Proceso creativo</h2>
+                    <p class="mt-5 text-[17px] leading-relaxed text-[#4A4A4A]">
+                        Cada rápido de diseño es un ejercicio intensivo de una semana que exige investigar, tomar decisiones y materializar una propuesta de vestuario capaz de responder a un
+                        reto específico en un tiempo limitado.
+                    </p>
+                </div>
+                <div class="space-y-12">
+                    <div class="reveal flex gap-6">
+                        <div class="serif text-[64px] leading-none text-[#36454F]">01</div>
+                        <div>
+                            <h3 class="serif text-[28px]">Brief & Enunciado</h3>
+                            <p class="mt-2 text-[#4A4A4A]">Cada reto inicia con la presentación del enunciado por parte de los docentes, donde se exponen el contexto, los objetivos y las restricciones del ejercicio. Posteriormente se conforman los equipos de trabajo -según la dinámica del proyecto- y comienza el análisis de la problemática para definir una dirección conceptual.</p>
+                        </div>
+                    </div>
+                    <div class="reveal flex gap-6">
+                        <div class="serif text-[64px] leading-none text-[#36454F]">02</div>
+                        <div>
+                            <h3 class="serif text-[28px]">Conceptualización & Selección</h3>
+                            <p class="mt-2 text-[#4A4A4A]">Durante la primera jornada se desarrolla una exploración intensiva mediante investigación, lluvia de ideas, referentes y bocetación. Al finalizar el día, cada equipo presenta sus propuestas para seleccionar el diseño que será desarrollado durante el resto del reto.</p>
+                        </div>
+                    </div>
+                    <div class="reveal flex gap-6">
+                        <div class="serif text-[64px] leading-none text-[#36454F]">03</div>
+                        <div>
+                            <h3 class="serif text-[28px]">Planeación & Desarrollo</h3>
+                            <p class="mt-2 text-[#4A4A4A]">Con el diseño definido, se toman decisiones técnicas y productivas: cálculo del consumo textil, selección y compra de materiales, elaboración del patronaje y desarrollo de la prenda mediante procesos de confección, experimentación y ajustes.</p>
+                        </div>
+                    </div>
+                    <div class="reveal flex gap-6">
+                        <div class="serif text-[64px] leading-none text-[#36454F]">04</div>
+                        <div>
+                            <h3 class="serif text-[28px]">Presentación</h3>
+                            <p class="mt-2 text-[#4A4A4A]">Al finalizar el reto, cada equipo realiza un brief de menos de diez minutos para comunicar el concepto, el proceso y las decisiones de diseño. La presentación se acompaña de una infografía de apoyo; sin embargo, el vestuario debe ser capaz de comunicar la propuesta por sí mismo, evidenciando la relación entre concepto, materialidad y construcción.</p>
+                        </div>
+                    </div>
+                    <div class="reveal flex gap-6">
+                        <div class="serif text-[64px] leading-none text-[#36454F]">05</div>
+                        <div>
+                            <h3 class="serif text-[28px]">Resultados</h3>
+                            <p class="mt-2 text-[#4A4A4A]"> Entre los proyectos que conforman esta sección, "El Mausoleo Distópico" fue seleccionado entre los mejores rápidos de diseño de su semestre y obtuvo reconocimiento, destacándose por la solidez de su propuesta conceptual, el desarrollo de la prenda y la reflexión crítica que plantea sobre la crisis climática y el consumismo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MATERIALIZADO -->
+    <section id="materializado" class="py-24 lg:py-32 bg-[#F5F1EA]">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl reveal">
+                <h2 class="serif text-[52px] leading-[1.05] mt-3">Trabajos materializados</h2>
+            </div>
+
+            <!-- Para cambiar la cantidad de columnas seria la propiedad cols-# -->
+            <div class="mt-16 grid md:grid-cols-3 lg:grid-cols-3 gap-8">
+                <!-- Card 1 Foto Mausoleo -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="Images/Retos/rapido-01.jpeg"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                            alt="Territorios e identidades: Rituales del amor">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Mausoleo Distópico</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Crítica al consumismo desmedido por Sara Posso, Valeria Villa y Andrea Contreras.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Sesión de fotos</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2024</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 2 Entre ramas -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="Images/Retos/rapido-02.jpeg"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                            alt="Territorios e identidades: Rituales del amor">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Entre ramas y ruido</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Aprender a florecer por Sara Posso, Ana Grajales, Maria Quintero, Maria Gonzalez y Andrea Contreras.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Sesión de fotos</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2025</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Card 3 Dao Xin -->
+                <article
+                    class="group reveal bg-white rounded-[24px] overflow-hidden shadow-sm border border-black/5 flex flex-col">
+                    <div class="aspect-[4/5] overflow-hidden">
+                        <img src="Images/Retos/rapido-03.jpeg"
+                            class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                            alt="Territorios e identidades: Rituales del amor">
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <h3 class="serif text-[24px]">Dao Xin</h3>
+                        <p class="mt-2 text-[14px] text-[#5A5A5A] leading-relaxed flex-1">Procesos del alma por Natalí Alba, Emiliano González y Andrea Contreras.</p>
+                        <div class="mt-4 flex flex-wrap gap-2 text-[11px] uppercase tracking-wide">
+                            <span class="px-3 py-1 rounded-full bg-black/5">Sesión de fotos</span>
+                            <span class="px-3 py-1 rounded-full bg-black/5">2026</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-white/10 bg-[#1A1A1A] text-white/50">
+        <div
+            class="max-w-[1200px] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px]">
+            <p>&copy; <span id="year"></span> Valentina Contreras — Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm hidden items-center justify-center p-6">
+        <button id="lbClose" class="absolute top-6 right-6 text-white/80 hover:text-white text-3xl">&times;</button>
+        <img id="lbImg" src="" alt="" class="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+            <p id="lbCaption" class="text-white/90 serif text-[20px]"></p>
+            <p id="lbMeta" class="text-white/50 text-[13px] mt-1"></p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Reveal on scroll
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Cursor
+        const cursor = document.getElementById('cursor');
+        window.addEventListener('mousemove', e => {
+            cursor.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`;
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.style.transform += ' scale(2)');
+            el.addEventListener('mouseleave', () => cursor.style.transform = cursor.style.transform.replace(' scale(2)', ''));
+        });
+
+        // Lightbox
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbCaption = document.getElementById('lbCaption');
+        const lbMeta = document.getElementById('lbMeta');
+        function openLightbox(item) {
+            lbImg.src = item.src;
+            lbCaption.textContent = item.title;
+            lbCaption.className = "serif text-[22px] uppercase leading-tight text-[#5A3637] font-bold bg-[#f3f4f6] py-2 px-4 rounded-md";
+            lbMeta.textContent = item.meta;
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+        document.getElementById('lbClose').onclick = () => lb.classList.add('hidden');
+        lb.addEventListener('click', e => { if (e.target === lb) lb.classList.add('hidden'); });
+
+        // Year for Copy Right
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
