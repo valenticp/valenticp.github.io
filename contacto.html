@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valenticp</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: #FCFBF8;
+            color: #1A1A1A;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        .serif {
+            font-family: var(--font-serif);
+        }
+
+        .glass {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(252, 251, 248, 0.7);
+        }
+
+        .masonry {
+            column-count: 1;
+            column-gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .masonry {
+                column-count: 3;
+            }
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all .8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .cursor-dot {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: #A6458A;
+            border-radius: 50%;
+            pointer-events: none;
+            /*mix-blend-mode: difference;*/
+            z-index: 9999;
+            transition: transform .15s ease;
+        }
+
+        .imagen-centrada {
+            display: block;
+            /* Convierte la imagen en bloque */
+            margin: 0px 0px 0px 80px;
+            /* Arriba | Derecha | Abajo | Izquierda */
+            width: 50%;
+            /* Tamaño de la imagen */
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F5F1EA;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #D9CFC4;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #C4B7A8;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-[#D76C5A]/20">
+
+    <div class="cursor-dot hidden md:block" id="cursor"></div>
+
+    <!-- NAV -->
+    <nav class="fixed top-0 w-full z-50 glass border-b border-black/5">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 h-[72px] flex items-center justify-between">
+            <a href="index.html" class="serif text-[22px] tracking-tight">Andrea Valentina Contreras Pérez</a>
+            <div class="hidden md:flex items-center gap-10 text-[14px] font-medium">
+                <a href="#ilustraciones" class="hover:opacity-60 transition">Ilustración</a>
+                <a href="#materializado" class="hover:opacity-60 transition">Materializado</a>
+                <a href="#sobre-mi" class="hover:opacity-60 transition">Sobre mí</a>
+                <a href="#contacto"
+                    class="px-4 py-2 rounded-full bg-[#1A1A1A] text-white hover:bg-black transition">Contacto</a>
+            </div>
+            <button id="menuBtn" class="md:hidden p-2">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M4 12h16M4 6h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden border-t border-black/5 glass">
+            <div class="px-6 py-4 flex flex-col gap-4 text-[15px]">
+                <a href="#ilustraciones">Ilustración</a>
+                <a href="#materializado">Materializado</a>
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#contacto" class="mt-2 px-4 py-2 rounded-full bg-[#1A1A1A] text-white text-center">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="py-24 bg-[#1A1A1A]/80 text-[#F5F1EA]">
+        <div class="max-w-[1200px] mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16">
+            <div class="reveal">
+                <h2 class="serif text-[52px] leading-[1.05]">Trabajemos juntos</h2>
+                <p class="mt-5 text-[17px] leading-relaxed text-white/70 max-w-md">¿Tienes un proyecto de vestuario,
+                    colección o ilustración textil? Me encantaría escucharte. Trabajo en ilustración de moda, diseño
+                    textil, vestuario escénico, estampados, entre otros.</p>
+                <div class="mt-10 space-y-4 text-[15px]">
+                    <a href="mailto:andreav.contrerasp@gmail.com" class="flex items-center gap-3 hover:opacity-80">✉️
+                        andreav.contrerasp@gmail.com</a>
+                    <a href="mailto:andrea.contreras@upb.edu.co" class="flex items-center gap-3 hover:opacity-80">✉️
+                        andrea.contreras@upb.edu.co</a>
+                    <!-- a href="https://instagram.com" target="_blank" class="flex items-center gap-3 hover:opacity-80">📷 @valentina.rios.studio</a -->
+                    <p class="flex items-center gap-3">
+                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                            <path
+                                d="M16 0H4a2 2 0 0 0-2 2v1H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v2H1a1 1 0 0 0 0 2h1v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm-5.5 4.5a3 3 0 1 1 0 6 3 3 0 0 1 0-6ZM13.929 17H7.071a.5.5 0 0 1-.5-.5 3.935 3.935 0 1 1 7.858 0 .5.5 0 0 1-.5.5Z" />
+                        </svg>
+                        <span>+57 301 344 9710</span>
+                    </p>
+                    <p class="flex items-center gap-3">📍 Medellín, Colombia — También disponible para trabajo remoto
+                    </p>
+                </div>
+            </div>
+            <!-- FORMULARIO -->
+            <form action="https://api.web3forms.com/submit" method="POST" id="contactForm"
+                class="reveal bg-white/5 backdrop-blur rounded-[24px] p-8 border border-white/10 space-y-5">
+
+                <input type="hidden" name="access_key" value="2743bacd-9613-4c02-8319-71e6a3fd02aa">
+                <div class="grid sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="text-[13px] text-white/70">Nombre</label>
+                        <input required type="text" name="name"
+                            class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition placeholder-white/40"
+                            placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label class="text-[13px] text-white/70">Email</label>
+                        <input required type="email" name="email"
+                            class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition placeholder-white/40"
+                            placeholder="tu@email.com">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[13px] text-white/70">Tipo de proyecto</label>
+                    <select name="type"
+                        class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition">
+                        <option class="text-black">Ilustración de moda</option>
+                        <option class="text-black">Diseño textil / estampado</option>
+                        <option class="text-black">Vestuario escénico</option>
+                        <option class="text-black">Colaboración / Otro</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-[13px] text-white/70">Mensaje</label>
+                    <textarea required name="message" rows="4"
+                        class="mt-2 w-full bg-white/10 border border-white/15 rounded-xl px-4 py-3 outline-none focus:border-[#D76C5A] transition placeholder-white/40"
+                        placeholder="Cuéntame sobre tu idea..."></textarea>
+                </div>
+
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <button type="submit"
+                    class="w-full py-3 rounded-xl bg-[#D76C5A] hover:bg-[#c95f4e] transition font-medium">Enviar
+                    mensaje</button>
+                <p id="formMsg" class="text-center text-[13px] text-white/60 hidden">¡Gracias! Te responderé en 24-48h.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-white/10 bg-[#1A1A1A]/80 text-white/50">
+        <div
+            class="max-w-[1200px] mx-auto px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-[13px]">
+            <p>&copy; <span id="year"></span> Valentina Contreras — Todos los derechos reservados.</p>
+            <!-- div class="flex gap-6">
+                <a href="#" class="hover:text-white transition">Instagram</a>
+                <a href="#" class="hover:text-white transition">Behance</a>
+                <a href="#" class="hover:text-white transition">LinkedIn</a>
+            </div -->
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm hidden items-center justify-center p-6">
+        <button id="lbClose" class="absolute top-6 right-6 text-white/80 hover:text-white text-3xl">&times;</button>
+        <img id="lbImg" src="" alt="" class="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-2xl">
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
+            <p id="lbCaption" class="text-white/90 serif text-[20px]"></p>
+            <p id="lbMeta" class="text-white/50 text-[13px] mt-1"></p>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        // Reveal on scroll
+        const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+        // Lightbox
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbCaption = document.getElementById('lbCaption');
+        const lbMeta = document.getElementById('lbMeta');
+        function openLightbox(item) {
+            lbImg.src = item.src;
+            lbCaption.textContent = item.title;
+            lbCaption.className = "serif text-[22px] uppercase leading-tight text-[#A6458A] font-bold bg-[#f3f4f6] py-2 px-4 rounded-md";
+            lbMeta.textContent = item.meta;
+            lb.classList.remove('hidden');
+            lb.classList.add('flex');
+        }
+        document.getElementById('lbClose').onclick = () => lb.classList.add('hidden');
+        lb.addEventListener('click', e => { if (e.target === lb) lb.classList.add('hidden'); });
+
+        // Form
+        /*document.getElementById('contactForm').addEventListener('submit', e => {
+            e.preventDefault();
+            document.getElementById('formMsg').classList.remove('hidden');
+            e.target.reset();
+        });*/
+
+        const form = document.getElementById('contactForm');
+        const submitBtn = form.querySelector('button[type="submit"]');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            formData.append("access_key", "2743bacd-9613-4c02-8319-71e6a3fd02aa");
+
+            const originalText = submitBtn.textContent;
+
+            submitBtn.textContent = "Sending...";
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch("https://api.web3forms.com/submit", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    alert("Success! Your message has been sent.");
+                    form.reset();
+                } else {
+                    alert("Error: " + data.message);
+                }
+
+            } catch (error) {
+                alert("Something went wrong. Please try again.");
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Year for Copy Right
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
